@@ -1,0 +1,2 @@
+dbt-bigquery==0.21.0
+soda-sql-bigquery==2.1.0b17

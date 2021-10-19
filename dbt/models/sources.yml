@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: libraries_io
+    schema: libraries_io
+    database: club-cloud-dbt-soda
+    tables:
+      - name: dependencies
+        identifier: dependencies
+      - name: projects
+        identifier: projects
+      - name: repositories
+        identifier: repositories
+      - name: repository_dependencies
+        identifier: repository_dependencies
+      - name: tags
+        identifier: tags
+      - name: versions
+        identifier: versions

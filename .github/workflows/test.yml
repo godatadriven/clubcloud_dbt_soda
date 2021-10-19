@@ -15,7 +15,7 @@ jobs:
 
 # change the host and token to ACC if we want to move ACC to non-prd consumer zone
     env: 
-      BQ_ACCESS: ${{ secrets.BIGQUERY_SERVICE_ACCOUNT }
+      BQ_ACCESS: ${{ secrets.BIGQUERY_SERVICE_ACCOUNT }}
 
     steps: 
       - uses: actions/checkout@v1

@@ -1,4 +1,4 @@
-table_name: subway_ridership_2013_present
+table_name: repositories
 metrics:
   - row_count
   - missing_count
@@ -20,3 +20,8 @@ metrics:
   - variance
 tests:
   - row_count > 0
+columns:
+  uuid:
+    valid_format: number_whole
+    tests:
+      - invalid_percentage <= 1

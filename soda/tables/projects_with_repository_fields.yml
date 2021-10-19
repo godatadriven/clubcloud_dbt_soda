@@ -1,4 +1,4 @@
-table_name: stations
+table_name: projects_with_repository_fields
 metrics:
   - row_count
   - missing_count
@@ -20,12 +20,3 @@ metrics:
   - variance
 tests:
   - row_count > 0
-columns:
-  station_id:
-    valid_format: number_whole
-    tests:
-      - invalid_percentage == 0
-  complex_id:
-    valid_format: number_whole
-    tests:
-      - invalid_percentage == 0

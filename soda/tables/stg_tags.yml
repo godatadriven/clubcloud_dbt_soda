@@ -1,4 +1,4 @@
-table_name: geo_nyc_borough_boundaries
+table_name: stg_tags
 metrics:
   - row_count
   - missing_count
@@ -20,8 +20,3 @@ metrics:
   - variance
 tests:
   - row_count > 0
-columns:
-  borough_code:
-    valid_format: number_whole
-    tests:
-      - invalid_percentage == 0

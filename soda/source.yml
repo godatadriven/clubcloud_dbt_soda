@@ -1,0 +1,7 @@
+name: soda_bq
+connection:
+    type: bigquery
+    account_info_json: env_var(BQ_ACCESS)
+    auth_scopes:
+    - https://www.googleapis.com/auth/bigquery
+    dataset: libraries_io

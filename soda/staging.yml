@@ -4,4 +4,4 @@ connection:
     account_info_json: env_var(BQ_ACCESS)
     auth_scopes:
     - https://www.googleapis.com/auth/bigquery
-    dataset: new_york_subway
+    dataset: dbt_staging

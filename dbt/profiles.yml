@@ -1,0 +1,13 @@
+dbt_clubcloud_profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: club-cloud-dbt-soda
+      dataset: dbt
+      threads: 3
+      keyfile: /home/runner/work/bq_keys.json
+      timeout_seconds: 300
+      location: EU
+      priority: interactive

@@ -1,12 +1,15 @@
-name: test
+name: Ad hoc pipeline
 on:
-  push:
-    branches:
-      - work_on_pipeline
+  workflow_dispatch:
+    inputs:
+      is_full_refresh:
+        description: 'Flag indicating if a full-refresh should happen'
+        required: true 
+        default: 'false'
 
 jobs:
-  test:
-    name: test
+  ad_hoc:
+    name: Ad hoc job
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -39,4 +42,4 @@ jobs:
 
       - name: Run dbt
         run: |
-          dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/
+          if [ ${{ github.event.inputs.name }} = "false" ]; then dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/; else dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/ --full-refresh; fi

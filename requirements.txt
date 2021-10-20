@@ -1,2 +1,2 @@
 dbt-bigquery==0.21.0
-git+git://github.com/sodadata/soda-sql.git@main#egg=soda-sql-bigquery\&subdirectory=packages/bigquery#egg=soda-sql-bigquery
+git+git://github.com/sodadata/soda-sql.git@main#egg=soda-sql-bigquery&subdirectory=packages/bigquery

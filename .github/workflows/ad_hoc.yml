@@ -42,4 +42,4 @@ jobs:
 
       - name: Run dbt
         run: |
-          if [ ${{ github.event.inputs.name }} = "false" ]; then dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/; else dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/ --full-refresh; fi
+          if [ ${{ github.event.inputs.is_full_refresh }} = "false" ]; then dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/; else dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/ --full-refresh; fi

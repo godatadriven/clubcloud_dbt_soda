@@ -18,5 +18,7 @@ metrics:
   - min
   - stddev
   - variance
+samples:
+  table_limit: 50
 tests:
   - row_count > 0

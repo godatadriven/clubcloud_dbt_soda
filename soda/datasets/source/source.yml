@@ -4,4 +4,8 @@ connection:
     account_info_json: env_var(BQ_ACCESS)
     auth_scopes:
     - https://www.googleapis.com/auth/bigquery
-    dataset: dbt_staging
+    dataset: libraries_io
+soda_account:
+    host: cloud.soda.io
+    api_key_id: env_var(API_KEY_ID)
+    api_key_secret: env_var(API_KEY_SECRET)

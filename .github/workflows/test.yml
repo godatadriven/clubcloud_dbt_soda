@@ -1,11 +1,12 @@
-name: Pipeline
+name: test
 on:
-  schedule:
-    - cron: '10 12 * * *'
+  push:
+    branches:
+      - work_on_pipeline
 
 jobs:
-  Pipeline:
-    name: Pipeline
+  test:
+    name: test
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4

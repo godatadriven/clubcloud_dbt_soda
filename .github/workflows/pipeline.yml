@@ -1,7 +1,7 @@
 name: Pipeline
 on:
   schedule:
-    - cron: '25 13 * * *'
+    - cron: '00 12 * * *'
 
 jobs:
   Pipeline:

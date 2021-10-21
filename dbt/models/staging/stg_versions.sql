@@ -18,7 +18,7 @@ FROM {{source('libraries_io', 'versions')}}
 WHERE TRUE
 
 {% if is_incremental() %}
-    AND DATE(created_timestamp) = DATE_SUB(CURRENT_DATE(), INTERVAL {{days_back}} DAY)
+    AND DATE(updated_timestamp) = DATE_SUB(CURRENT_DATE(), INTERVAL {{days_back}} DAY)
 {% else %}
-    AND DATE(created_timestamp) < DATE_SUB(CURRENT_DATE(), INTERVAL {{days_back}} DAY)
+    AND DATE(updated_timestamp) < DATE_SUB(CURRENT_DATE(), INTERVAL {{days_back}} DAY)
 {% endif %}

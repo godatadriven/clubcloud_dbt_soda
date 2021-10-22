@@ -13,7 +13,6 @@ on:
       scan_tables:
         description: 'Indicate what tables you want to scan with soda. If it is more than one, provide table values separated by commas'
         required: false
-        default: 'stg_tags'
 
 jobs:
   ad_hoc:

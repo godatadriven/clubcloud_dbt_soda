@@ -1,5 +1,5 @@
 table_name: stg_projects
-filter: "DATE(reated_timestamp) = DATE_SUB(CURRENT_DATE(), INTERVAL 1200 DAY)"
+filter: "DATE(created_timestamp) = DATE_SUB(PARSE_DATE('%d-%m-%Y', '{{ date }}'), INTERVAL 1200 DAY)"
 metrics:
   - row_count
   - missing_count

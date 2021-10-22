@@ -39,3 +39,7 @@ jobs:
       - name: Run dbt
         run: |
           dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/
+
+      - name: Run soda
+        run: |
+          python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset staging

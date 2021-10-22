@@ -6,6 +6,14 @@ on:
         description: 'Flag indicating if a full-refresh should happen'
         required: true 
         default: 'false'
+      scan_dataset:
+        description: 'Indicate what dataset you want to scan with soda'
+        required: true
+        default: 'staging'
+      scan_tables:
+        description: 'Indicate what tables you want to scan with soda. If it is more than one, provide table values separated by commas'
+        required: false
+        default: 'stg_tags'
 
 jobs:
   ad_hoc:
@@ -43,3 +51,11 @@ jobs:
       - name: Run dbt
         run: |
           if [ ${{ github.event.inputs.is_full_refresh }} = "false" ]; then dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/; else dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/ --full-refresh; fi
+
+      - name: Run soda
+        run: |
+          if [ ${{ github.event.inputs.scan_tables }} = "" ]
+          then 
+            python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset ${{ github.event.inputs.scan_dataset }}
+          else 
+            python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset ${{ github.event.inputs.scan_dataset }} --tables ${{ github.event.inputs.scan_tables }}

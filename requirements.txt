@@ -1,2 +1,3 @@
 dbt-bigquery==0.21.0
+google-cloud-bigquery-storage==1.1.0
 git+git://github.com/sodadata/soda-sql.git@main#egg=soda-sql-bigquery&subdirectory=packages/bigquery

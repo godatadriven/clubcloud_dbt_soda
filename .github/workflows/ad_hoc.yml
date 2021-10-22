@@ -53,7 +53,7 @@ jobs:
 
       - name: Run soda
         run: |
-          if [ ${{ github.event.inputs.scan_tables }} = "" ]
+          if [ -z "${{ github.event.inputs.scan_tables }}" ]
           then 
             python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset ${{ github.event.inputs.scan_dataset }}
           else 

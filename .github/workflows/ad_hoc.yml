@@ -59,3 +59,4 @@ jobs:
             python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset ${{ github.event.inputs.scan_dataset }}
           else 
             python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset ${{ github.event.inputs.scan_dataset }} --tables ${{ github.event.inputs.scan_tables }}
+          fi

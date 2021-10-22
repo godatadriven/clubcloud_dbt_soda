@@ -6,8 +6,8 @@ from datetime import date
 
 def run_soda_scan(dataset: str, table: str):
     scan_builder = ScanBuilder()
-    scan_builder.warehouse_yml_file = f"./datasets/{dataset}/{dataset}.yml"
-    scan_builder.scan_yml_file = f"./datasets/{dataset}/tables/{table}.yml"
+    scan_builder.warehouse_yml_file = f"./soda/datasets/{dataset}/{dataset}.yml"
+    scan_builder.scan_yml_file = f"./soda/datasets/{dataset}/tables/{table}.yml"
     scan_builder.variables = {"date": date.today().strftime("%d-%m-%Y")}
     scan = scan_builder.build()
     scan_result = scan.execute()
@@ -20,14 +20,14 @@ def run_partial_dataset_scan(dataset: str, tables: List[str]):
 
 def run_full_dataset_scan(dataset: str):
     print(f"Running a full dataset scan on dataset {dataset}...")
-    path = Path(f"./datasets/{dataset}/tables/")
+    path = Path(f"./soda/datasets/{dataset}/tables/")
     tables = [f.stem.split(',')[0] for f in path.glob("*.yml")]
     for table in tables:
         run_soda_scan(dataset, table)
 
 def run_full_warehouse_scan():
     print("Running a full warehouse scan...")
-    path = Path("./datasets/")
+    path = Path("./soda/datasets/")
     for p in path.iterdir():
         run_full_dataset_scan(p.name)
 

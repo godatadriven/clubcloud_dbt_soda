@@ -23,10 +23,10 @@ with versions as (
 project_versions as (
 
     select versions.*,
-           project_repos.* except (project_id),
+           int_project_repos.* except(project_id)
 
     from versions
-    left join {{ ref('int_project_repos') }} on project_repos.project_id = versions.project_id
+    left join {{ ref('int_project_repos') }} using (project_id)
 
 )
 

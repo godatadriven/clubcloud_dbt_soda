@@ -10,11 +10,10 @@
 {% set days_back = 7 %}
 {% set max_ingested_date = max_date_from_table('version_updated_timestamp', 'project_versions') %}
 
-project_versions as(
+with project_versions as(
     select
            project_id,
            project_name,
-           project_description,
            repo_name,
            repo_owner,
            platform,
@@ -24,7 +23,6 @@ project_versions as(
            count(*) as total_version_count,
            sum(case when DATE(version_updated_timestamp) >= date_sub(DATE({{ max_ingested_date }}), interval {{days_back}} day) then 1 else 0 end ) as releases_last_week
     from {{ ref('project_versions') }}
-    cross join latest_date
     group by
            1,2,3,4,5,6,7,8,9
 )

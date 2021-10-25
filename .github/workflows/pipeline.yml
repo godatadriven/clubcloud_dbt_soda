@@ -41,5 +41,8 @@ jobs:
           dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/
 
       - name: Run soda
+        env: 
+          API_KEY_ID: ${{ secrets.API_KEY_ID }}
+          API_KEY_SECRET: ${{ secrets.API_KEY_SECRET }}
         run: |
           python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset staging

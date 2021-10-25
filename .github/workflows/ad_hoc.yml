@@ -52,6 +52,9 @@ jobs:
           if [ ${{ github.event.inputs.is_full_refresh }} = "false" ]; then dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/; else dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/ --full-refresh; fi
 
       - name: Run soda
+        env: 
+          API_KEY_ID: ${{ secrets.API_KEY_ID }}
+          API_KEY_SECRET: ${{ secrets.API_KEY_SECRET }}
         run: |
           if [ -z "${{ github.event.inputs.scan_tables }}" ]
           then 

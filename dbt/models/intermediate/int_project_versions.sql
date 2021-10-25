@@ -1,16 +1,10 @@
 {{
-     config(
-         materialized='incremental',
-         incremental_strategy = 'insert_overwrite',
-         schema = 'core',
-         unique_key='version_id',
-         partition_by={
-             "field": "version_created_timestamp",
-             "data_type": "timestamp"
-        }
-     )
+    config(
+    materialized='table'
+    , schema='intermediate'
+    , unique_key='version_id'
+    )
 }}
-
 
 with versions as (
 
@@ -32,7 +26,7 @@ project_versions as (
            project_repos.* except (project_id),
 
     from versions
-    left join {{ ref('project_repos') }} on project_repos.project_id = versions.project_id
+    left join {{ ref('int_project_repos') }} on project_repos.project_id = versions.project_id
 
 )
 

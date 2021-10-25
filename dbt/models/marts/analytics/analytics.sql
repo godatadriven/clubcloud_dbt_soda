@@ -1,24 +1,14 @@
 {{
-     config(
-         materialized='incremental',
-         incremental_strategy = 'insert_overwrite',
-         schema = 'core',
-         unique_key='project_id',
-         partition_by={
-             "field": "project_created_timestamp",
-             "data_type": "timestamp"
-        }
-     )
+    config(
+    materialized='table'
+    , schema='marts_analytics'
+    , unique_key='project_id'
+    )
 }}
+
+
 {% set days_back = 7 %}
-
-with latest_date as (
-    select
-            max(version_updated_timestamp) as latest_date
-    from    {{ ref('project_versions') }}
-
-
-),
+{% set max_ingested_date = max_date_from_table('version_updated_timestamp', 'project_versions') %}
 
 project_versions as(
     select
@@ -32,7 +22,7 @@ project_versions as(
            language,
            project_created_timestamp,
            count(*) as total_version_count,
-           sum(case when DATE(version_updated_timestamp) >= date_sub(DATE(latest_date.latest_date), interval {{days_back}} day) then 1 else 0 end ) as releases_last_week
+           sum(case when DATE(version_updated_timestamp) >= date_sub(DATE({{ max_ingested_date }}), interval {{days_back}} day) then 1 else 0 end ) as releases_last_week
     from {{ ref('project_versions') }}
     cross join latest_date
     group by

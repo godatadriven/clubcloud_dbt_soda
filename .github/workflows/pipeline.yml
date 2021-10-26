@@ -46,4 +46,4 @@ jobs:
           API_KEY_ID: ${{ secrets.API_KEY_ID }}
           API_KEY_SECRET: ${{ secrets.API_KEY_SECRET }}
         run: |
-          python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset staging
+          python $GITHUB_WORKSPACE/soda/trigger_soda.py --dataset staging,intermediate,marts_core,marts_analytics

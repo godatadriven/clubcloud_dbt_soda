@@ -22,8 +22,3 @@ samples:
   table_limit: 50
 tests:
   - row_count > 0
-columns:
-  uuid:
-    valid_format: number_whole
-    tests:
-      - invalid_percentage <= 3

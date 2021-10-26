@@ -19,7 +19,14 @@ metrics:
   - min
   - stddev
   - variance
+metric_groups:
+  - duplicates
 samples:
   table_limit: 50
 tests:
   - row_count > 0
+columns:
+  id:
+    tests:
+      - duplicate_count == 0
+      - mising_count == 0

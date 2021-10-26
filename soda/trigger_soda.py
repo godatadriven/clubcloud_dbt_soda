@@ -33,7 +33,7 @@ def run_full_warehouse_scan():
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description="Helper to run progrmatic soda scans")
-    parser.add_argument("--dataset", type=str, help="Dataset containing the table(s) that you want to scan", required=False)
+    parser.add_argument("--dataset", type=str, help="Dataset(s) containing the table(s) that you want to scan. Separate by ',' for more than one dataset scan", required=False)
     parser.add_argument("--tables", type=str, help="Single table or several tables separated by ',' that you want scan", required=False)
     args = parser.parse_args()
 
@@ -44,7 +44,12 @@ if __name__=='__main__':
         run_full_warehouse_scan()
 
     elif args.dataset is not None and args.tables is None:
-        run_full_dataset_scan(args.dataset)
+        if ',' in args.dataset:
+            datasets = args.dataset.strip().split(',')
+            for dataset in datasets:
+                run_full_dataset_scan(dataset)
+        else:
+            run_full_dataset_scan(args.dataset)
 
     else:
         if ',' in args.tables:

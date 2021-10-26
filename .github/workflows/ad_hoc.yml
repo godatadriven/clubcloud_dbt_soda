@@ -49,7 +49,7 @@ jobs:
 
       - name: Run dbt
         run: |
-          dbt deps
+          dbt deps --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/
           if [ ${{ github.event.inputs.is_full_refresh }} = "false" ]
           then 
             dbt run --profiles-dir $GITHUB_WORKSPACE/dbt/ --project-dir $GITHUB_WORKSPACE/dbt/ 

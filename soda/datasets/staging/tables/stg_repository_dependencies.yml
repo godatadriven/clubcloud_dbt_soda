@@ -1,0 +1,24 @@
+table_name: stg_repository_dependencies
+metrics:
+  - row_count
+  - missing_count
+  - missing_percentage
+  - values_count
+  - values_percentage
+  - invalid_count
+  - invalid_percentage
+  - valid_count
+  - valid_percentage
+  - avg_length
+  - max_length
+  - min_length
+  - avg
+  - sum
+  - max
+  - min
+  - stddev
+  - variance
+samples:
+  table_limit: 50
+tests:
+  - row_count > 0

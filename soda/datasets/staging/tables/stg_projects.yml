@@ -29,4 +29,4 @@ columns:
   id:
     tests:
       - duplicate_count == 0
-      - mising_count == 0
+      - missing_count == 0

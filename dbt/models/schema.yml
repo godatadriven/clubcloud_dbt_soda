@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_repos
+    description: This model contains information with regards to the repositories of these public projects. <br>For data quality information please visit https://cloud.soda.io/datasets/fcfc470c-bfd5-41d2-9b25-177953feed15/columns
+
+  - name: stg_projects
+    description: This model contains information with regards to the projects of public software components in different distribution platforms. <br>For data quality information please visit https://cloud.soda.io/datasets/3da02327-83ec-4d23-ab3f-c1a428ab23a8/columns
+
+  - name: stg_dependencies
+    description: This model contains information regarding the dependencies of the projects in a one project to many dependencies relation. <br>For data quality information please visit https://cloud.soda.io/datasets/813d8e9c-380a-4870-9035-b6a85878f828/columns
+
+  - name: stg_repository_dependencies
+    description: This model contains is a pre-build joint version of repositories and dependencies. <br>For data quality information please visit https://cloud.soda.io/datasets/a2b4d11c-601a-424a-be4a-c2129606b276/columns
+
+  - name: stg_versions
+    description: This model contains information regarding the versions of the projects and the release information. <br>For data quality information please visit https://cloud.soda.io/datasets/2c02e76c-8ebe-473f-a71e-e665edea5f00/columns
+
+  - name: stg_tags
+    description: This models provides information regarding the tags of the project. <br>For data quality information please visit https://cloud.soda.io/datasets/2cb6afd8-4eaa-465a-a18a-f8409a32275c/columns

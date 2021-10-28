@@ -22,6 +22,7 @@ metric_groups:
   - duplicates
 samples:
   table_limit: 50
+  failed_limit: 20
 tests:
   - row_count > 0
 columns:

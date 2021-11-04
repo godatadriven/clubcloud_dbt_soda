@@ -17,8 +17,12 @@ SELECT *
 FROM {{source('libraries_io', 'projects')}}
 WHERE TRUE
 
-{% if is_incremental() %}
-    AND DATE(created_timestamp) = DATE_SUB(CURRENT_DATE(), INTERVAL {{days_back}} DAY)
+{% if var.has_var('date') %}
+    AND DATE(created_timestamp) = DATE('{{ var("date") }}')
 {% else %}
-    AND DATE(created_timestamp) < DATE_SUB(CURRENT_DATE(), INTERVAL {{days_back}} DAY)
+    {% if is_incremental() %}
+        AND DATE(created_timestamp) = DATE_SUB(CURRENT_DATE(), INTERVAL {{days_back}} DAY)
+    {% else %}
+        AND DATE(created_timestamp) < DATE_SUB(CURRENT_DATE(), INTERVAL {{days_back}} DAY)
+    {% endif %}
 {% endif %}

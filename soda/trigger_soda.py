@@ -5,6 +5,7 @@ from typing import List
 from datetime import date
 
 def run_soda_scan(dataset: str, table: str):
+    print(f"Running {dataset}.{table} scan")
     scan_builder = ScanBuilder()
     scan_builder.warehouse_yml_file = f"./soda/datasets/{dataset}/{dataset}.yml"
     scan_builder.scan_yml_file = f"./soda/datasets/{dataset}/tables/{table}.yml"

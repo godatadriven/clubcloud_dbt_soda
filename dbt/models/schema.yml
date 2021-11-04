@@ -16,5 +16,17 @@ models:
   - name: stg_versions
     description: This model contains information regarding the versions of the projects and the release information. <br>For data quality information please visit https://cloud.soda.io/datasets/2c02e76c-8ebe-473f-a71e-e665edea5f00/columns
 
-  - name: stg_tags
-    description: This models provides information regarding the tags of the project. <br>For data quality information please visit https://cloud.soda.io/datasets/2cb6afd8-4eaa-465a-a18a-f8409a32275c/columns
+  - name: int_project_versions
+    description: Intermediate model for project versions. <br>For data quality information please visit https://cloud.soda.io/datasets/3c10d1d0-69c3-4a3b-97ff-458b593b78a2/columns
+
+  - name: int_project_repos
+    description: Intermediate model for project repos. <br>For data quality information please visit https://cloud.soda.io/datasets/edf026b3-654f-4428-85a8-0979e755c2e8/columns
+
+  - name: analytics
+    description: Mart table for analytics reporting. <br>For data quality information please visit https://cloud.soda.io/datasets/82ae255a-d314-4138-9882-2640856bffe2/columns
+
+  - name: project_repos
+    description: Mart table for project and repository information. <br>For data quality information please visit https://cloud.soda.io/datasets/a46f1f90-d9c3-438c-afb2-1c3df6cbf53d/columns
+
+  - name: project_versions
+    description: Mart table for project versions. <br>For data quality information please visit https://cloud.soda.io/datasets/6e7989f7-0a9c-44b7-97a8-c1fa3521263f/columns

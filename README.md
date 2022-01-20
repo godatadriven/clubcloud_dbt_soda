@@ -48,9 +48,18 @@ soda scan path/to/warehouse.yml path/to/scan.yml
 python soda/trigger_soda.py --dataset <name_of_dataset> --tables <table_names_separated_by_comma>
 ```
 
+### Soda-cloud setup
+1. Open a trial account at https://cloud.soda.io/
+2. Go to Profile>API Keys and click on the `+` button to add a new API key.
+3. You can set these API keys locally as environment variables if you want to run soda locally and collect the results in the cloud!
+```bash
+export API_KEY_ID=<soda_key_id>
+export API_KEY_SECRET=<soda_key_secret>
+```
+
 ### CI/CD pipeline
 If you want to run the end to end set-up, you can do so from the `.github/workflows/ad_hoc.yml` pipeline. For this, you need to make sure to setup the following Github Secrets: 
 - BIGQUERY_SERVICE_ACCOUNT: which contains the full content of the `keyfile.json`
-- API_KEY_ID: the key id provided in the `keyfile.json`
-- API_KEY_SECRET: the key secret provided in the `keyfile.json`
-If your soda authentication works also with a JSON key file, then the last two secrets may not be necessary! Just make sure you adapt your `warehouse.yml` files with the new authentication method.
+- API_KEY_ID: your soda cloud API Key
+- API_KEY_SECRET: your soda cloud API secret
+
